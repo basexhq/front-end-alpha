@@ -1,0 +1,4 @@
+<h1>Home</h1>
+
+<div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')" close="closeAlert($index)">{{alert.msg}}</div>
+<button class='btn btn-default' ng-click="addAlert()">Add Alert</button>
