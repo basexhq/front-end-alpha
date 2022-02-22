@@ -1,5 +1,5 @@
-app.filter('makeUppercase', function () {
-    return function (item) {
-      return item.toUpperCase();
+app.filter('orgNameFromID', function (data) {
+    return function (guid) {
+        return  data.getOrganisationNameByID(guid);
     };
-  });
+});

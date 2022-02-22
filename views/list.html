@@ -18,7 +18,7 @@
     <tbody>
       <tr ng-repeat="row in reports">
         <th scope="row">{{ $index + 1 }}</th>
-        <td>{{ row.organisation | makeUppercase}}</td>
+        <td>{{ row.orgID | orgNameFromID}}</td>
         <td>{{ row.title }}</td>
         <td>{{ row.comments }}</td>
         <td>{{ row.date }}</td>

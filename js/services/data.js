@@ -5,7 +5,7 @@ app.service('data', function ($q) {
     
     return [
         {
-            organisation: '9d0c5973-8fc3-4a32-b8d2-b2ed23c326bb',
+            orgID: '9d0c5973-8fc3-4a32-b8d2-b2ed23c326bb',
             date: '2022-02-22',
             accountingPeriodStart: '2021-01-01',
             accountingPeriodEnd: '2021-12-31',
@@ -15,7 +15,7 @@ app.service('data', function ($q) {
             comments: 'Sample content - Google'
         },
         {
-            organisation: '891c3bff-e66f-4b2e-88cd-7132b2900ca7',
+            orgID: '891c3bff-e66f-4b2e-88cd-7132b2900ca7',
             date: '2022-02-21',
             accountingPeriodStart: '2020-01-01',
             accountingPeriodEnd: '2020-12-31',
@@ -25,7 +25,7 @@ app.service('data', function ($q) {
             comments: 'Sample content - Amazon'
         },
         {
-            organisation: '987fc002-65f3-46e7-b41d-7c6a8fdf4ae0',
+            orgID: '987fc002-65f3-46e7-b41d-7c6a8fdf4ae0',
             date: '2022-02-20',
             accountingPeriodStart: '2020-01-01',
             accountingPeriodEnd: '2020-12-31',
@@ -47,6 +47,8 @@ app.service('data', function ($q) {
     ]
 
   }
+
+
   service.getOrganisations = function() {
     
     return [
@@ -64,6 +66,16 @@ app.service('data', function ($q) {
         }
     ]
 
+  }
+
+  service.getOrganisationNameByID = function(guid) {
+    let organisations = service.getOrganisations();
+    for (let i=0; i<organisations.length; i++) {
+        if (organisations[i].guid.toLocaleLowerCase() === guid.toLocaleLowerCase()) {
+            return organisations[i].name;
+        } 
+    }
+    return "NOT FOUND";
   }
 
   return service;
