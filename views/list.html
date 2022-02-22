@@ -1,8 +1,28 @@
-<h1>List of companies</h1>
+<h1>List of reports</h1>
 {{ message }}
 
 <button ng-click="newReport()">New Report</button>
 
 <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Organisation</th>
+        <th>Title</th>
+        <th>Comments</th>
+        <th>Date</th>
+        <th>Source</th>
 
-</table>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="row in reports">
+        <th scope="row">{{ $index + 1 }}</th>
+        <td>{{ row.organisation | makeUppercase}}</td>
+        <td>{{ row.title }}</td>
+        <td>{{ row.comments }}</td>
+        <td>{{ row.date }}</td>
+        <td><a href="{{ row.sourceURL }}">source</a></td>
+      </tr>
+    </tbody>
+  </table>
