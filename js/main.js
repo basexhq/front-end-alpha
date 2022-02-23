@@ -30,7 +30,8 @@ app.config(function ($routeProvider) {
     })
     .when('/list', {
       templateUrl: 'views/list.html',
-      controller: "ListCtrl"
+      controller: "ListCtrl",
+      controllerAs: "$ctrl"
     })
     .otherwise('/home')
 
