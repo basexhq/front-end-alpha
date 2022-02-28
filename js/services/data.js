@@ -12,7 +12,7 @@ app.service('data', function ($q) {
             sourceURL: 'https://www.gstatic.com/gumdrop/sustainability/google-2021-environmental-report.pdf',
             ipfs: 'QmW2RXnrqbehV6CSswjRmUhGNKWqAZak8LQ5JHxnYXRnrq',
             title: 'Google Environmental Report 2021',
-            comments: 'Sample content - Google'
+            comments: 'Sample content - Lorem ipsum'
         },
         {
             orgID: '891c3bff-e66f-4b2e-88cd-7132b2900ca7',
@@ -22,7 +22,7 @@ app.service('data', function ($q) {
             sourceURL: 'https://sustainability.aboutamazon.com/pdfBuilderDownload?name=amazon-sustainability-2020-reportf',
             ipfs: 'QmTJscoacG5DPqafuJrWxnF1si1smgJDgwJTtGt4S53Bng',
             title: 'Amazon Sustainability 2020 Report',
-            comments: 'Sample content - Amazon'
+            comments: 'Sample content - Lorem ipsum'
         },
         {
             orgID: '987fc002-65f3-46e7-b41d-7c6a8fdf4ae0',
@@ -32,7 +32,7 @@ app.service('data', function ($q) {
             sourceURL: '',
             ipfs: 'QmPjtsxhqMSKDP7oSakHqKsiCGnJzsuTvKyRdQ7Ek9h5D2',
             title: 'Tesla Impact Report 2020',
-            comments: 'Sample content - Tesla'
+            comments: 'Sample content - Lorem ipsum'
         },
         // {
         //     organisation: '',

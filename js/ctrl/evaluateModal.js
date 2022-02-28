@@ -1,12 +1,11 @@
-app.controller('ModalInstanceCtrl', function ($uibModalInstance, items) {
+app.controller('ModalInstanceCtrl', function ($uibModalInstance, report) {
     var $ctrlModal = this;
-    $ctrlModal.items = items;
-    $ctrlModal.selected = {
-      item: $ctrlModal.items[0]
-    };
+    $ctrlModal.report = report;
+
+    $ctrlModal.evaluationResult = {}
   
     $ctrlModal.ok = function () {
-      $uibModalInstance.close($ctrlModal.selected.item);
+      $uibModalInstance.close($ctrlModal.evaluationResult);
     };
   
     $ctrlModal.cancel = function () {
