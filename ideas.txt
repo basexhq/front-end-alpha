@@ -91,3 +91,16 @@ BUGS
 Clicking outside should not close the popup
 Add X instead
 Preserve the text -
+
+
+
+
+ESG TBL
+
+TBL ESG
+
+
+MME EEG
+EEG MMA
+
+(similar to chess boxing)

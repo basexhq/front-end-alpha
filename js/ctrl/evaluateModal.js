@@ -1,11 +1,12 @@
-app.controller('ModalInstanceCtrl', function ($uibModalInstance, report) {
+app.controller('ModalInstanceCtrl', function ($uibModalInstance, report, ipfs) {
     var $ctrlModal = this;
     $ctrlModal.report = report;
 
     $ctrlModal.evaluationResult = {}
   
     $ctrlModal.ok = function () {
-      $uibModalInstance.close($ctrlModal.evaluationResult);
+      ipfs.upload($ctrlModal.evaluationResult)
+      // $uibModalInstance.close($ctrlModal.evaluationResult);
     };
   
     $ctrlModal.cancel = function () {
