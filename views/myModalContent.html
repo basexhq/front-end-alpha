@@ -18,7 +18,7 @@
 
           <div class="input-group">
             <div class="input-group-addon">$</div>
-            <input type="number" class="form-control" id="people" placeholder="Amount" required ng-model="$ctrlModal.evaluationResult.people">
+            <input type="number" class="form-control" id="people" placeholder="Amount" required ng-model="$ctrlModal.evaluationResult.people" required>
           </div>
         
           <textarea class="form-control" placeholder="Justification..." rows="3" ng-model="$ctrlModal.evaluationResult.peopleJustification"></textarea>
@@ -29,7 +29,7 @@
   
             <div class="input-group">
               <div class="input-group-addon">$</div>
-              <input type="number" class="form-control" id="planet" placeholder="Amount" required ng-model="$ctrlModal.evaluationResult.planet">
+              <input type="number" class="form-control" id="planet" placeholder="Amount" required ng-model="$ctrlModal.evaluationResult.planet" required>
             </div>
           
             <textarea class="form-control" placeholder="Justification..." rows="3" ng-model="$ctrlModal.evaluationResult.planetJustification"></textarea>
@@ -40,11 +40,17 @@
   
             <div class="input-group">
               <div class="input-group-addon">$</div>
-              <input type="number" class="form-control" id="profit" placeholder="Amount" required ng-model="$ctrlModal.evaluationResult.profit">
+              <input type="number" class="form-control" id="profit" placeholder="Amount" required ng-model="$ctrlModal.evaluationResult.profit" required>
             </div>
           
             <textarea class="form-control" placeholder="Justification..." rows="3" ng-model="$ctrlModal.evaluationResult.profitJustification"></textarea>
          </div>
+
+         <div class="form-group">
+          <label for="profit">General comments</label>
+        
+          <textarea class="form-control" placeholder="Any additional thoughts and comments you may have..." rows="3" ng-model="$ctrlModal.evaluationResult.comments"></textarea>
+       </div>
 
     </form>
 
