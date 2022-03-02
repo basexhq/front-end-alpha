@@ -4,61 +4,53 @@
     <p><i>{{ $ctrlModal.report.comments }}</i></p>
 
 </div>
-<div class="modal-body" id="modal-body">
-    <!-- <ul>
-        <li ng-repeat="item in $ctrlModal.items">
-            <a href="#" ng-click="$event.preventDefault(); $ctrlModal.selected.item = item">{{ item }}</a>
-        </li>
-    </ul>
-    Selected: <b>{{ $ctrlModal.selected.item }}</b> -->
+<form  ng-submit="$ctrlModal.ok()">
+  <div class="modal-body" id="modal-body">
+      
+          <div class="form-group">
+            <label for="people">People</label>
 
-    <form>
-        <div class="form-group">
-          <label for="people">People</label>
-
-          <div class="input-group">
-            <div class="input-group-addon">$</div>
-            <input type="number" class="form-control" id="people" placeholder="Amount" required ng-model="$ctrlModal.evaluationResult.people" required>
+            <div class="input-group">
+              <div class="input-group-addon">$</div>
+              <input type="number" class="form-control" id="people" placeholder="Amount" required ng-model="$ctrlModal.evaluationResult.people" required>
+            </div>
+          
+            <textarea class="form-control" placeholder="Justification..." rows="3" ng-model="$ctrlModal.evaluationResult.peopleJustification"></textarea>
           </div>
-        
-          <textarea class="form-control" placeholder="Justification..." rows="3" ng-model="$ctrlModal.evaluationResult.peopleJustification"></textarea>
+
+          <div class="form-group">
+              <label for="planet">Planet</label>
+    
+              <div class="input-group">
+                <div class="input-group-addon">$</div>
+                <input type="number" class="form-control" id="planet" placeholder="Amount" required ng-model="$ctrlModal.evaluationResult.planet" required>
+              </div>
+            
+              <textarea class="form-control" placeholder="Justification..." rows="3" ng-model="$ctrlModal.evaluationResult.planetJustification"></textarea>
+          </div>
+
+          <div class="form-group">
+              <label for="profit">Profit</label>
+    
+              <div class="input-group">
+                <div class="input-group-addon">$</div>
+                <input type="number" class="form-control" id="profit" placeholder="Amount" required ng-model="$ctrlModal.evaluationResult.profit" required>
+              </div>
+            
+              <textarea class="form-control" placeholder="Justification..." rows="3" ng-model="$ctrlModal.evaluationResult.profitJustification"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="profit">General comments</label>
+          
+            <textarea class="form-control" placeholder="Any additional thoughts and comments you may have..." rows="3" ng-model="$ctrlModal.evaluationResult.comments"></textarea>
         </div>
 
-        <div class="form-group">
-            <label for="planet">Planet</label>
-  
-            <div class="input-group">
-              <div class="input-group-addon">$</div>
-              <input type="number" class="form-control" id="planet" placeholder="Amount" required ng-model="$ctrlModal.evaluationResult.planet" required>
-            </div>
-          
-            <textarea class="form-control" placeholder="Justification..." rows="3" ng-model="$ctrlModal.evaluationResult.planetJustification"></textarea>
-        </div>
+      </form>
 
-        <div class="form-group">
-            <label for="profit">Profit</label>
-  
-            <div class="input-group">
-              <div class="input-group-addon">$</div>
-              <input type="number" class="form-control" id="profit" placeholder="Amount" required ng-model="$ctrlModal.evaluationResult.profit" required>
-            </div>
-          
-            <textarea class="form-control" placeholder="Justification..." rows="3" ng-model="$ctrlModal.evaluationResult.profitJustification"></textarea>
-         </div>
+  <div class="modal-footer">
+      <button class="btn btn-warning" type="button" ng-click="$ctrlModal.cancel()">Cancel</button>
+      <button class="btn btn-primary" type="submit">Save</button>
+  </div>
 
-         <div class="form-group">
-          <label for="profit">General comments</label>
-        
-          <textarea class="form-control" placeholder="Any additional thoughts and comments you may have..." rows="3" ng-model="$ctrlModal.evaluationResult.comments"></textarea>
-       </div>
-
-    </form>
-
-
-</div>
-<div class="modal-footer">
-    <button class="btn btn-warning" type="button" ng-click="$ctrlModal.cancel()">Cancel</button>
-    <button class="btn btn-primary" type="button" ng-click="$ctrlModal.ok()">Save</button>
-
-    <div id="ipfsLink"></div>
-</div>
+</form>
