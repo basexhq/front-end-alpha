@@ -1,4 +1,4 @@
-app.controller("ListCtrl", function($scope, data, $uibModal, $log, $document) {   
+app.controller("ReportsCtrl", function($scope, data, $uibModal, $log, $document) {   
     $scope.reports = data.getReports();
 
     var $ctrl = this;

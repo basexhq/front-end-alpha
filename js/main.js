@@ -28,9 +28,9 @@ app.config(function ($routeProvider) {
       controller: "HomeCtrl"
 
     })
-    .when('/list', {
-      templateUrl: 'views/list.html',
-      controller: "ListCtrl",
+    .when('/reports', {
+      templateUrl: 'views/reports.html',
+      controller: "ReportsCtrl",
       controllerAs: "$ctrl"
     })
     .otherwise('/home')

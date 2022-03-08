@@ -23,7 +23,7 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.6/ui-bootstrap-tpls.min.js'></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-
+    <script src='nsg.js'></script>
     <script>
       async function initializeETH() {
         const provider = new ethers.providers.Web3Provider(window.ethereum)
@@ -37,9 +37,12 @@
         const signer = provider.getSigner()
 
         // const tx = signer.sendTransaction({
-        //     to: "ricmoo.firefly.eth",
+        //     to: "0x4724e90C7E773AAd8123B79A236A9717A9F5Ae1f",
         //     value: ethers.utils.parseEther("1.0")
         // });
+
+        contract = new ethers.Contract("0xBaC8dfe5111801AFa7c3A0Ac024DCe65952694b2" , nsg.abi , signer)
+
       }
 
       initializeETH();
@@ -50,7 +53,7 @@
 
     <div class="menu">
       <a href="#!/home">home</a>
-      <a href="#!/list">list</a>
+      <a href="#!/reports">reports</a>
     </div>
 
     <div ng-view></div>
@@ -59,7 +62,7 @@
 
   <script src="js/main.js"></script>
   <script src="js/ctrl/home.js"></script>
-  <script src="js/ctrl/list.js"></script>
+  <script src="js/ctrl/reports.js"></script>
   <script src="js/ctrl/evaluateModal.js"></script>
   <script src="js/services/data.js"></script>
   <script src="js/services/ipfs.js"></script>
