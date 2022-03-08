@@ -1,4 +1,4 @@
-app.controller('ModalInstanceCtrl', function ($uibModalInstance, report, ipfs) {
+app.controller('EvaluateModalCtrl', function ($uibModalInstance, report, ipfs) {
     var $ctrlModal = this;
     $ctrlModal.report = report;
 

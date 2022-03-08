@@ -6,8 +6,8 @@ app.controller("ReportsCtrl", function($scope, data, $uibModal, $log, $document)
     $ctrl.evaluate = function(report) {
 
         var modalInstance = $uibModal.open({
-            templateUrl: 'views/myModalContent.html',
-            controller: 'ModalInstanceCtrl',
+            templateUrl: 'views/evaluateModal.html',
+            controller: 'EvaluateModalCtrl',
             controllerAs: '$ctrlModal',
             resolve: {
               report: function () {
