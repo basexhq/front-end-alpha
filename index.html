@@ -57,6 +57,12 @@
 
         // console.log(organisationNames);
 
+        // https://docs.angularjs.org/guide/bootstrap
+        // Examples of when you'd need to do this include using script loaders or the need to perform an operation before AngularJS compiles a page.
+
+        angular.element(function() {
+          angular.bootstrap(document, ['app']);
+        });
 
       }
 
@@ -64,7 +70,7 @@
     </script>
 
   </head>
-  <body ng-app="app">
+  <body>
 
     <div class="menu">
       <a href="#!/home">home</a>
