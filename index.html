@@ -23,8 +23,12 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.6/ui-bootstrap-tpls.min.js'></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-    <script src='nsg.js'></script>
+    <script src='js/abi.js'></script>
     <script>
+      // THINK: do we require MetaMask to access the website?
+      // For the time being yes, as it allows to read the data
+      // TODO: obviously do not require it
+
       async function initializeETH() {
         const provider = new ethers.providers.Web3Provider(window.ethereum)
 
@@ -41,7 +45,18 @@
         //     value: ethers.utils.parseEther("1.0")
         // });
 
-        contract = new ethers.Contract("0xBaC8dfe5111801AFa7c3A0Ac024DCe65952694b2" , nsg.abi , signer)
+        contract = new ethers.Contract("0x693140cf099E42A0B915897299839658cd3c49f0" , abi , signer)
+
+        organisationsLength = (await contract.organisationsLength()).toNumber();
+
+        let arrayOfPromises = [];
+        for (let i=0; i<organisationsLength; i++) {
+          arrayOfPromises.push(contract.organisations(i))
+        }
+        organisationNames = await Promise.all(arrayOfPromises);
+
+        // console.log(organisationNames);
+
 
       }
 

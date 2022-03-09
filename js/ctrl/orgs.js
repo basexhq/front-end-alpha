@@ -1,7 +1,13 @@
-app.controller("OrgsCtrl", function($scope, data, $uibModal, $log, $document) {   
+app.controller("OrgsCtrl", function($scope, data, $uibModal, $log, $document, $window) {   
     $scope.reports = data.getReports();
 
     var $ctrl = this;
+
+    $scope.newOrganisation = function() {
+      console.log("TODO")
+    }
+
+    $scope.orgs = $window.organisationNames;
 
     // $ctrl.evaluate = function(report) {
 
