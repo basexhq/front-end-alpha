@@ -23,22 +23,60 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.6/ui-bootstrap-tpls.min.js'></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-    <script src='js/abi.js'></script>
+    <noscript><link href="css/no-js.css" /> </noscript>
+
+
+  </head>
+  <body>
+
+    <span id="javascript-required" style="display:none">
+      <h1>Need to have JavaScript enabled</h1>
+    </span>
+
+    <span id="metamask-required" style="display:none">
+      <h1>Need to have MetaMask installed: <a href="https://metamask.io">metamask.io</a></h1>
+    </span>
+
+    <span id="metamask-ok" style="display:none">
+      <div class="menu">
+        <a href="#!/home">home</a>
+        <a href="#!/reports">reports</a>
+        <a href="#!/orgs">orgs</a>
+      </div>
+
+      <div ng-view></div>
+    </span>
+
+  </body>
+
+  <script src='js/abi.js'></script>
     <script>
       // THINK: do we require MetaMask to access the website?
       // For the time being yes, as it allows to read the data
       // TODO: obviously do not require it
 
       async function initializeETH() {
-        const provider = new ethers.providers.Web3Provider(window.ethereum)
 
-        // MetaMask requires requesting permission to connect users accounts
-        await provider.send("eth_requestAccounts", []);
+        let signer, provider;
+        try {
+          provider = new ethers.providers.Web3Provider(window.ethereum)
 
-        // The MetaMask plugin also allows signing transactions to
-        // send ether and pay to change state within the blockchain.
-        // For this, you need the account signer...
-        const signer = provider.getSigner()
+          // MetaMask requires requesting permission to connect users accounts
+          await provider.send("eth_requestAccounts", []);
+
+          // The MetaMask plugin also allows signing transactions to
+          // send ether and pay to change state within the blockchain.
+          // For this, you need the account signer...
+          signer = provider.getSigner()
+        } catch {
+          console.error("Initialising MetaMask failed");
+          document.getElementById("metamask-required").style.display = "block";
+          return;
+        }
+
+        // We are properly initialised now
+        document.getElementById("metamask-ok").style.display = "block";
+
 
         // const tx = signer.sendTransaction({
         //     to: "0x4724e90C7E773AAd8123B79A236A9717A9F5Ae1f",
@@ -69,24 +107,12 @@
       initializeETH();
     </script>
 
-  </head>
-  <body>
-
-    <div class="menu">
-      <a href="#!/home">home</a>
-      <a href="#!/reports">reports</a>
-      <a href="#!/orgs">orgs</a>
-    </div>
-
-    <div ng-view></div>
-
-  </body>
-
   <script src="js/main.js"></script>
   <script src="js/ctrl/home.js"></script>
   <script src="js/ctrl/reports.js"></script>
   <script src="js/ctrl/orgs.js"></script>
   <script src="js/ctrl/evaluateModal.js"></script>
+  <script src="js/ctrl/newOrganisationModal.js"></script>
   <script src="js/services/data.js"></script>
   <script src="js/services/ipfs.js"></script>
   <script src="js/utils/filters.js"></script>

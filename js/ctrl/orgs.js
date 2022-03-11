@@ -1,13 +1,25 @@
 app.controller("OrgsCtrl", function($scope, data, $uibModal, $log, $document, $window) {   
     $scope.reports = data.getReports();
 
+    $scope.orgs = $window.organisationNames;
+
     var $ctrl = this;
 
     $scope.newOrganisation = function() {
-      console.log("TODO")
+      var modalInstance = $uibModal.open({
+        templateUrl: 'views/newOrganisationModal.html',
+        controller: 'NewOrganisationModalCtrl',
+        controllerAs: '$ctrlModal'
+      });
+  
+      modalInstance.result.then(function (result) {
+        console.log(result);
+      }, function () {
+        $log.info('Modal dismissed at: ' + new Date());
+      }); 
     }
 
-    $scope.orgs = $window.organisationNames;
+    
 
     // $ctrl.evaluate = function(report) {
 
