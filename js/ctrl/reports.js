@@ -4,22 +4,38 @@ app.controller("ReportsCtrl", function($scope, data, $uibModal, $log, $document)
     var $ctrl = this;
 
     $ctrl.evaluate = function(report) {
+      var modalInstance = $uibModal.open({
+        templateUrl: 'views/evaluateModal.html',
+        controller: 'EvaluateModalCtrl',
+        controllerAs: '$ctrlModal',
+        resolve: {
+          report: function () {
+            return report
+          }
+        }
+      });
+    
+      modalInstance.result.then(function (result) {
+        console.log(result);
+      }, function () {
+        $log.info('Modal dismissed at: ' + new Date());
+      }); 
+   }
 
-        var modalInstance = $uibModal.open({
-            templateUrl: 'views/evaluateModal.html',
-            controller: 'EvaluateModalCtrl',
-            controllerAs: '$ctrlModal',
-            resolve: {
-              report: function () {
-                return report
-              }
-            }
-          });
-      
-          modalInstance.result.then(function (result) {
-            console.log(result);
-          }, function () {
-            $log.info('Modal dismissed at: ' + new Date());
-          }); 
-    }
+  //  $scope.newReport = function() {
+  //   var modalInstance = $uibModal.open({
+  //     templateUrl: 'views/newOrganisationModal.html',
+  //     controller: 'NewOrganisationModalCtrl',
+  //     controllerAs: '$ctrlModal'
+  //   });
+
+  //   modalInstance.result.then(function (result) {
+  //     console.log(result);
+  //     $window.organisationNames.push(result);
+  //   }, function () {
+  //     $log.info('Modal dismissed at: ' + new Date());
+  //   }); 
+  // }
+
+
 });
