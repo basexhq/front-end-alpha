@@ -56,15 +56,15 @@ app.service('data', function ($q) {
     
     return [
         {
-            guid: '9d0c5973-8fc3-4a32-b8d2-b2ed23c326bb',
+            ordId: '9d0c5973-8fc3-4a32-b8d2-b2ed23c326bb',
             name: 'Google'
         },
         {
-            guid: '891c3bff-e66f-4b2e-88cd-7132b2900ca7',
+            ordId: '891c3bff-e66f-4b2e-88cd-7132b2900ca7',
             name: 'Amazon'
         },
         {
-            guid: '987fc002-65f3-46e7-b41d-7c6a8fdf4ae0',
+            ordId: '987fc002-65f3-46e7-b41d-7c6a8fdf4ae0',
             name: 'Tesla'
         }
     ]
