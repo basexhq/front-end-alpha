@@ -17,11 +17,11 @@
     <tbody>
       <tr ng-repeat="row in reports">
         <th scope="row">{{ $index + 1 }}</th>
-        <td>{{ row.orgID | orgNameFromID}}</td>
+        <td>{{ row.orgId | orgNameFromId}}</td>
         <td>{{ row.title }}</td>
         <td>{{ row.comments }}</td>
         <td>{{ row.date }}</td>
-        <td><a href="{{ row.sourceURL }}">source</a></td>
+        <td><a href="{{ row.sourceURL }}" target="_blank">source</a></td>
         <td><a href ng-click="$ctrl.evaluate(row)">evaluate</a></td>
 
       </tr>

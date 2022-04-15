@@ -1,4 +1,4 @@
-app.controller('EvaluateModalCtrl', function ($uibModalInstance, report, ipfs) {
+app.controller('EvaluateModalCtrl', function ($uibModalInstance, report, ipfs, eth) {
     var $ctrlModal = this;
     $ctrlModal.report = report;
 
@@ -7,7 +7,10 @@ app.controller('EvaluateModalCtrl', function ($uibModalInstance, report, ipfs) {
     $ctrlModal.ok = async function () {
       let ipfsHash = await ipfs.upload($ctrlModal.evaluationResult);
       console.info("IPFS hash of the uploaded data: " + ipfsHash + "\nhttps://gateway.ipfs.io/ipfs/" + ipfsHash);
-      // $uibModalInstance.close($ctrlModal.evaluationResult);
+      
+      eth.addEvalution(ipfsHash);
+      
+      $uibModalInstance.close($ctrlModal.evaluationResult);
     };
   
     $ctrlModal.cancel = function () {

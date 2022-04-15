@@ -49,7 +49,8 @@
 
   </body>
 
-  <script src='js/abi.js'></script>
+    <script src='js/setup.js'></script>
+
     <script>
       // THINK: do we require MetaMask to access the website?
       // For the time being yes, as it allows to read the data
@@ -83,7 +84,7 @@
         //     value: ethers.utils.parseEther("1.0")
         // });
 
-        contract = new ethers.Contract("0x693140cf099E42A0B915897299839658cd3c49f0" , abi , signer)
+        contract = new ethers.Contract(contractAddress , abi , signer) // coming from setup.js
 
         organisationsLength = (await contract.organisationsLength()).toNumber();
 
