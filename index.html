@@ -79,11 +79,6 @@
         document.getElementById("metamask-ok").style.display = "block";
 
 
-        // const tx = signer.sendTransaction({
-        //     to: "0x4724e90C7E773AAd8123B79A236A9717A9F5Ae1f",
-        //     value: ethers.utils.parseEther("1.0")
-        // });
-
         contract = new ethers.Contract(contractAddress , abi , signer) // coming from setup.js
 
         organisationsLength = (await contract.organisationsLength()).toNumber();
@@ -98,7 +93,6 @@
 
         // https://docs.angularjs.org/guide/bootstrap
         // Examples of when you'd need to do this include using script loaders or the need to perform an operation before AngularJS compiles a page.
-
         angular.element(function() {
           angular.bootstrap(document, ['app']);
         });
@@ -113,6 +107,7 @@
   <script src="js/ctrl/reports.js"></script>
   <script src="js/ctrl/orgs.js"></script>
   <script src="js/ctrl/evaluateModal.js"></script>
+  <script src="js/ctrl/newReportModal.js"></script>
   <script src="js/ctrl/newOrganisationModal.js"></script>
   <script src="js/services/data.js"></script>
   <script src="js/services/ipfs.js"></script>

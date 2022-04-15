@@ -1,15 +1,19 @@
-<!-- <div class="modal-header">
-    <h3 class="modal-title" id="modal-title">Add a new organisation</h3>
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Add a new Report</h3>
 
 </div>
 <form  ng-submit="$ctrlModal.ok()">
   <div class="modal-body" id="modal-body">
       
           <div class="form-group">
-            <label for="name">Name</label>
+            <label for="orgName">Organisation</label>
 
             <div class="input-group">
-              <input type="text" class="form-control" id="name" placeholder="Name" required ng-model="$ctrlModal.name" required autofocus>
+              <!-- <input type="text" class="form-control" id="name" placeholder="Name" required ng-model="$ctrlModal.name" required autofocus> -->
+
+              <select name="repeatSelect" id="orgName" ng-model="$ctrlModal.selectedOrganisation">
+                <option ng-repeat="option in $ctrlModal.organisations" value="{{option}}">{{option}}</option>
+              </select>
             </div>
         
           </div>
@@ -19,4 +23,4 @@
       <button class="btn btn-primary" type="submit">Save</button>
   </div>
 
-</form> -->
+</form>

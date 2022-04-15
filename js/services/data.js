@@ -32,7 +32,7 @@ app.service('data', function ($q) {
             date: '2022-02-20',
             accountingPeriodStart: '2020-01-01',
             accountingPeriodEnd: '2020-12-31',
-            sourceURL: '',
+            sourceURL: 'https://www.tesla.com/ns_videos/2020-tesla-impact-report.pdf',
             ipfs: 'QmPjtsxhqMSKDP7oSakHqKsiCGnJzsuTvKyRdQ7Ek9h5D2',
             title: 'Tesla Impact Report 2020',
             comments: 'Sample content - Lorem ipsum'
