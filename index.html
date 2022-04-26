@@ -14,6 +14,8 @@
     <!-- IPFS upload example using Infura: https://genesis.re/kleros-metaevidence-metahash/ -->
     <script src="https://unpkg.com/ipfs-http-client@30.1.3/dist/index.js"></script>
     <script src="https://bundle.run/buffer@5.2.1"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"></script>
 
 
     <script src='http://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js'></script>
@@ -37,6 +39,10 @@
       <h1>Need to have MetaMask installed: <a href="https://metamask.io">metamask.io</a></h1>
     </span>
 
+    <span id="switch-network" style="display:none">
+      <h1>Need to switch network</h1>
+    </span>
+
     <span id="metamask-ok" style="display:none">
       <div class="menu">
         <a href="#!/home">home</a> | 
@@ -49,58 +55,8 @@
 
   </body>
 
-    <script src='js/setup.js'></script>
-
-    <script>
-      // THINK: do we require MetaMask to access the website?
-      // For the time being yes, as it allows to read the data
-      // TODO: obviously do not require it
-
-      async function initializeETH() {
-
-        let signer, provider;
-        try {
-          provider = new ethers.providers.Web3Provider(window.ethereum)
-
-          // MetaMask requires requesting permission to connect users accounts
-          await provider.send("eth_requestAccounts", []);
-
-          // The MetaMask plugin also allows signing transactions to
-          // send ether and pay to change state within the blockchain.
-          // For this, you need the account signer...
-          signer = provider.getSigner()
-        } catch {
-          console.error("Initialising MetaMask failed");
-          document.getElementById("metamask-required").style.display = "block";
-          return;
-        }
-
-        // We are properly initialised now
-        document.getElementById("metamask-ok").style.display = "block";
-
-
-        contract = new ethers.Contract(contractAddress , abi , signer) // coming from setup.js
-
-        organisationsLength = (await contract.organisationsLength()).toNumber();
-
-        let arrayOfPromises = [];
-        for (let i=0; i<organisationsLength; i++) {
-          arrayOfPromises.push(contract.organisations(i))
-        }
-        organisationNames = await Promise.all(arrayOfPromises);
-
-        // console.log(organisationNames);
-
-        // https://docs.angularjs.org/guide/bootstrap
-        // Examples of when you'd need to do this include using script loaders or the need to perform an operation before AngularJS compiles a page.
-        angular.element(function() {
-          angular.bootstrap(document, ['app']);
-        });
-
-      }
-
-      initializeETH();
-    </script>
+  <script src='js/config.js'></script>
+  <script src='js/setup.js'></script>
 
   <script src="js/main.js"></script>
   <script src="js/ctrl/home.js"></script>
@@ -112,6 +68,7 @@
   <script src="js/services/data.js"></script>
   <script src="js/services/ipfs.js"></script>
   <script src="js/services/eth.js"></script>
+  <script src="js/services/utils.js"></script>
   <script src="js/utils/filters.js"></script>
 
   <script>

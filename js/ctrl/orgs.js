@@ -3,6 +3,8 @@ app.controller("OrgsCtrl", function($scope, data, $uibModal, $log, $document, $w
 
     $scope.orgs = $window.organisationNames;
 
+    console.log($scope.orgs);
+
     var $ctrl = this;
 
     $scope.newOrganisation = function() {
