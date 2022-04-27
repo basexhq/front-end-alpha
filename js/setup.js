@@ -33,6 +33,8 @@ async function initializeETH() {
 
     contract = new ethers.Contract(contractAddress , abi , signer)
 
+
+    /////// INITIATILISING ORGANISATIONS
     organisationsLength = (await contract.organisationsLength()).toNumber();
 
     let arrayOfPromises = [];
@@ -41,7 +43,35 @@ async function initializeETH() {
     }
     let tempResult = await Promise.all(arrayOfPromises);
 
-    organisationNames = tempResult.map(item => ({ orgId: item.orgId, name: item.name }));
+    organisations = tempResult.map(item => ({ orgId: item.orgId, name: item.name }));
+
+
+
+    /////// INITIATILISING REPORTS
+    reportsLength = (await contract.reportsLength()).toNumber();
+
+    arrayOfPromises = [];
+    for (let i=0; i<reportsLength; i++) {
+        arrayOfPromises.push(contract.reports(i))
+    }
+    tempResult = await Promise.all(arrayOfPromises);
+
+    reports = tempResult.map(item => ({ 
+        reportId: item.reportId, 
+        orgId: item.orgId,
+        uploader: item.uploader,
+        uploadDate: new Date(item.uploadDate * 1000),
+        accountingPeriodStart: new Date(item.accountingPeriodStart * 1000),
+        accountingPeriodEnd: new Date(item.accountingPeriodEnd * 1000),
+        sourceURL: item.sourceURL,
+        ipfsHash: item.ipfsHash,
+        title: item.title,
+        comments: item.comments
+    }));
+
+    console.log(reports);
+
+
 
     // https://docs.angularjs.org/guide/bootstrap
     // Examples of when you'd need to do this include using script loaders or the need to perform an operation before AngularJS compiles a page.

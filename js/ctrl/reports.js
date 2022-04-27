@@ -1,5 +1,5 @@
 app.controller("ReportsCtrl", function($scope, data, $uibModal, $log, $window) {   
-    $scope.reports = data.getReports();
+    $scope.reports = $window.reports; // data.getReports();
 
     var $ctrl = this;
 
@@ -29,14 +29,14 @@ app.controller("ReportsCtrl", function($scope, data, $uibModal, $log, $window) {
       controllerAs: '$ctrlModal',
       resolve: {
         organisations: function() {
-          return $window.organisationNames;
+          return $window.organisations;
         }
       }
     });
 
     // modalInstance.result.then(function (result) {
     //   console.log(result);
-    //   $window.organisationNames.push(result);
+    //   $window.organisations.push(result);
     // }, function () {
     //   $log.info('Modal dismissed at: ' + new Date());
     // }); 
