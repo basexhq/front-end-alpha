@@ -14,4 +14,10 @@ app.controller('NewReportModalCtrl', function ($uibModalInstance, eth, ipfs, org
     $ctrlModal.cancel = function () {
       $uibModalInstance.dismiss('cancel');
     };
+
+    $ctrlModal.upload = function(event) {
+      var files = event.target.files;
+
+      console.log(files);
+    }
   });

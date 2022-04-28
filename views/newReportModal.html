@@ -6,29 +6,70 @@
   <div class="modal-body" id="modal-body">
       
           <div class="form-group">
+
             <label for="orgName">Organisation</label>
-
             <div class="input-group">
-              <!-- <input type="text" class="form-control" id="name" placeholder="Name" required ng-model="$ctrlModal.name" required autofocus> -->
-
-              <select name="repeatSelect" id="orgName" ng-model="$ctrlModal.selectedOrganisation">
-                <option ng-repeat="option in $ctrlModal.organisations" value="{{option}}">{{option}}</option>
+              <select class="form-control" name="repeatSelect" id="orgName" ng-model="$ctrlModal.selectedOrganisation">
+                <option ng-repeat="option in $ctrlModal.organisations" value="{{option.orgId}}">{{option.name}}</option>
               </select>
             </div>
 
+            <br>
+
+            <label for="title">Title</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="title" placeholder="Title..." required ng-model="$ctrlModal.title" required>
+            </div>
+
+            <br>
+
+            <label for="sourceURL">Source URL</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="sourceURL" placeholder="https://source..." required ng-model="$ctrlModal.sourceURL" required>
+            </div>
+
+            <br>
+
+            <label for="ipfsUpload">Upload to IPFS</label>
+            <div class="input-group">
+              <input type="file" id="ipfsUpload" ng-model="$ctrlModal.ipfsFileInput"  custom-on-change="$ctrlModal.upload">
+            </div>
+
+            <br>
+
+            <label for="comments">Accounting period start</label>
+            <div class="input-group">
+              <input type="date" class="form-control">
+            </div>
+
+            <br>
+
+            <label for="comments">Accounting period end</label>
+            <div class="input-group">
+              <input type="date" class="form-control" placeholder="Text input">
+            </div>
+            
+            <br>
+
+            <label for="comments">Comments</label>
+            <div class="input-group">
+              <textarea class="form-control" id="comments" placeholder="Comments..." required ng-model="$ctrlModal.comments">
+            </div>
+
+
             <!-- 
               
-        string reportId;
-        string orgId;
+        string reportId;  -- autogen
+        string orgId; 
         string ipfsHash;
-        address uploader;
-        uint uploadDate;
+        address uploader; -- autogen
+        uint uploadDate; -- autogen
         uint accountingPeriodStart;
         uint accountingPeriodEnd;
 
-        string sourceURL;
-        string title;
-        string comments;
+        string sourceURL; ---
+        string title; ---
+        string comments; ----
             
             -->
 
