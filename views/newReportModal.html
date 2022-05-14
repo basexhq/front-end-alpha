@@ -7,76 +7,59 @@
       
           <div class="form-group">
 
-            <label for="orgName">Organisation</label>
+            <label for="orgName">Organisation<span class="required">*</span></label>
             <div class="input-group">
-              <select class="form-control" name="repeatSelect" id="orgName" ng-model="$ctrlModal.selectedOrganisation">
+              <select class="form-control" name="repeatSelect" id="orgName" ng-model="$ctrlModal.selectedOrganisation" required>
+                <option value="">Choose an organisation...</option>
                 <option ng-repeat="option in $ctrlModal.organisations" value="{{option.orgId}}">{{option.name}}</option>
               </select>
             </div>
 
             <br>
 
-            <label for="title">Title</label>
+            <label for="title">Title<span class="required">*</span></label>
             <div class="input-group">
               <input type="text" class="form-control" id="title" placeholder="Title..." required ng-model="$ctrlModal.title" required>
             </div>
 
             <br>
 
-            <label for="sourceURL">Source URL</label>
+            <label for="sourceURL">Source URL<span class="required">*</span></label>
             <div class="input-group">
-              <input type="text" class="form-control" id="sourceURL" placeholder="https://source..." required ng-model="$ctrlModal.sourceURL" required>
+              <input type="url" class="form-control" id="sourceURL" placeholder="https://source..." required ng-model="$ctrlModal.sourceURL" required>
             </div>
 
             <br>
 
-            <label for="ipfsUpload">Upload to IPFS</label>
+            <label for="ipfsUpload">Upload to IPFS<span class="required">*</span></label>
             <div class="input-group">
-              <input type="file" id="ipfsUpload" ng-model="$ctrlModal.ipfsFileInput"  custom-on-change="$ctrlModal.upload">
+              <input type="file" id="ipfsUpload" custom-on-change="$ctrlModal.upload" required>
+              <p class="help-block">If no PDF version available please "print as PDF" and upload the file</p>
+              <p class="help-block" ng-show="$ctrlModal.state === 'uploading'"><img src="images/spinner.gif" height="30"></p>
+              <p class="help-block" ng-show="$ctrlModal.state === 'uploaded'">IPFS hash: <a href='https://gateway.ipfs.io/ipfs/{{ $ctrlModal.ipfsHash }}'>{{ $ctrlModal.ipfsHash }}</a></p>
             </div>
 
             <br>
 
-            <label for="comments">Accounting period start</label>
+            <label for="comments">Accounting period start<span class="required">*</span></label>
             <div class="input-group">
-              <input type="date" class="form-control">
+              <input type="date" class="form-control" ng-model="$ctrlModal.accountingPeriodStart" required>
             </div>
 
             <br>
 
-            <label for="comments">Accounting period end</label>
+            <label for="comments">Accounting period end<span class="required">*</span></label>
             <div class="input-group">
-              <input type="date" class="form-control" placeholder="Text input">
+              <input type="date" class="form-control" ng-model="$ctrlModal.accountingPeriodEnd" required>
             </div>
             
             <br>
 
             <label for="comments">Comments</label>
             <div class="input-group">
-              <textarea class="form-control" id="comments" placeholder="Comments..." required ng-model="$ctrlModal.comments">
+              <textarea class="form-control" id="comments" placeholder="Comments... (optional)" ng-model="$ctrlModal.comments"></textarea>
             </div>
-
-
-            <!-- 
-              
-        string reportId;  -- autogen
-        string orgId; 
-        string ipfsHash;
-        address uploader; -- autogen
-        uint uploadDate; -- autogen
-        uint accountingPeriodStart;
-        uint accountingPeriodEnd;
-
-        string sourceURL; ---
-        string title; ---
-        string comments; ----
-            
-            -->
-
-
-
-
-        
+       
           </div>
 
   <div class="modal-footer">

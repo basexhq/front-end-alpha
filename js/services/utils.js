@@ -4,6 +4,10 @@ app.service('utils', function ($q) {
     service.guid = function() {
         return uuid.v4();
     }
+
+    service.dateToUnix = function(date) {
+        return Math.floor(date.getTime() / 1000);
+    }
   
     return service;
     

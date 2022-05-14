@@ -119,3 +119,9 @@ Archive org API - whenever submitting to IPFS
 "We moved our data center to Iceland and we use 100% renewable energy"
 
 
+
+
+
+Intrinsic motivation
+Tokenomics
+Incentives
