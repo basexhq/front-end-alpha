@@ -19,7 +19,7 @@ app.controller('NewReportModalCtrl', function ($scope, $uibModalInstance, eth, i
 
       // addReport(string memory reportId, string memory orgId, string memory ipfsHash, uint accountingPeriodStart, uint accountingPeriodEnd, string memory sourceURL, string memory title, string memory comments)
     
-      await eth.addReport(utils.guid(), $ctrlModal.selectedOrganisation, $ctrlModal.ipfsHash, utils.dateToUnix($ctrlModal.accountingPeriodStart), utils.dateToUnix($ctrlModal.accountingPeriodEnd, $ctrlModal.sourceURL, $ctrlModal.title, $ctrlModal.comments));
+      await eth.addReport(utils.guid(), $ctrlModal.selectedOrganisation, $ctrlModal.ipfsHash, utils.dateToUnix($ctrlModal.accountingPeriodStart), utils.dateToUnix($ctrlModal.accountingPeriodEnd), $ctrlModal.sourceURL, $ctrlModal.title, $ctrlModal.comments || "");
       $uibModalInstance.close($ctrlModal.name);
     };
   

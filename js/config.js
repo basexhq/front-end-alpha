@@ -1,6 +1,6 @@
 networkId = 5777;
 
-contractAddress = "0x3a31C72812C7A3C0868E7bb9f778bC96c42780B3";
+contractAddress = "0xeF1f762Ff73Ebf858EbFE12e754a8D40813a8F2f";
 
 abi = [
 	{
