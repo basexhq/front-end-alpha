@@ -2,7 +2,11 @@ app.controller('EvaluateModalCtrl', function ($uibModalInstance, report, ipfs, e
     var $ctrlModal = this;
     $ctrlModal.report = report;
 
-    $ctrlModal.evaluationResult = {}
+    $ctrlModal.evaluationResult = {
+      sdgs : new Array(17)
+    }
+
+
   
     $ctrlModal.ok = async function () {
       let ipfsHash = await ipfs.uploadJSON($ctrlModal.evaluationResult);

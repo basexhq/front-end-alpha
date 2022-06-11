@@ -40,6 +40,28 @@
               <textarea class="form-control" placeholder="Justification..." rows="3" ng-model="$ctrlModal.evaluationResult.profitJustification"></textarea>
           </div>
 
+          <div class="form-group sdgs">
+            <h1>SDGs go here</h1>
+            <div ng-repeat="sdg in $ctrlModal.evaluationResult.sdgs track by $index" class="sdg-row">
+
+              <div class="sdg-column">
+                <img ng-src="images/sdg{{ $index + 1 }}.png">
+              </div>
+              <div class="sdg-column">
+                <div class="unspecified">Unspecified</div>
+                <div class="negative">Negative</div>
+                <div class="neutral">Neutral</div>
+                <div class="positive">Positive</div>
+              </div>
+
+
+            </div>
+
+          </div>
+
+
+
+
           <div class="form-group">
             <label for="profit">General comments</label>
           
