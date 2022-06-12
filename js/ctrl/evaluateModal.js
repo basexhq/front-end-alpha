@@ -20,4 +20,8 @@ app.controller('EvaluateModalCtrl', function ($uibModalInstance, report, ipfs, e
     $ctrlModal.cancel = function () {
       $uibModalInstance.dismiss('cancel');
     };
+
+    $ctrlModal.setUnknown = function () {
+      console.log("unknown");
+    }
   });

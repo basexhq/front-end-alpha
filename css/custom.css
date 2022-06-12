@@ -2,16 +2,68 @@
     color: red;
 }
 
+/* Emoji images source: https://pixabay.com/vectors/emojis-smileys-emoticons-6684004/ */
 
 /* https://www.w3schools.com/howto/howto_css_two_columns.asp */
-
-.sdg-column {
+/* USING BOOTSTRAP */
+/* .sdg-column {
     float: left;
-    width: 50%;
 }
 
 .sdg-row:after {
     content: "";
     display: table;
     clear: both;
+} */
+
+/* Slider: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_rangeslider */
+.slidecontainer {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 15px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #333;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #333;
+  cursor: pointer;
+}
+
+.unknown {
+    /* border: 1px solid #ccc;
+    border-radius: 4px; */
+    /* padding: 8px;
+    width: 50px;
+    height: 50px;
+    display: block; */
+    filter: grayscale(100%);
+}
+
+.unknown:hover {
+    filter: none;
 }

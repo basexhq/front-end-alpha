@@ -15,7 +15,7 @@
               <input type="number" class="form-control" id="people" placeholder="Amount" required ng-model="$ctrlModal.evaluationResult.people" required>
             </div>
           
-            <textarea class="form-control" placeholder="Justification..." rows="3" ng-model="$ctrlModal.evaluationResult.peopleJustification"></textarea>
+            <textarea class="form-control" placeholder="Comments..." rows="3" ng-model="$ctrlModal.evaluationResult.peopleJustification"></textarea>
           </div>
 
           <div class="form-group">
@@ -26,7 +26,7 @@
                 <input type="number" class="form-control" id="planet" placeholder="Amount" required ng-model="$ctrlModal.evaluationResult.planet" required>
               </div>
             
-              <textarea class="form-control" placeholder="Justification..." rows="3" ng-model="$ctrlModal.evaluationResult.planetJustification"></textarea>
+              <textarea class="form-control" placeholder="Comments..." rows="3" ng-model="$ctrlModal.evaluationResult.planetJustification"></textarea>
           </div>
 
           <div class="form-group">
@@ -37,27 +37,43 @@
                 <input type="number" class="form-control" id="profit" placeholder="Amount" required ng-model="$ctrlModal.evaluationResult.profit" required>
               </div>
             
-              <textarea class="form-control" placeholder="Justification..." rows="3" ng-model="$ctrlModal.evaluationResult.profitJustification"></textarea>
+              <textarea class="form-control" placeholder="Comments..." rows="3" ng-model="$ctrlModal.evaluationResult.profitJustification"></textarea>
           </div>
 
-          <div class="form-group sdgs">
-            <h1>SDGs go here</h1>
-            <div ng-repeat="sdg in $ctrlModal.evaluationResult.sdgs track by $index" class="sdg-row">
+          <div class="form-group">
+            <div ng-repeat="sdg in $ctrlModal.evaluationResult.sdgs track by $index" style="margin-bottom: 10px">
 
-              <div class="sdg-column">
-                <img ng-src="images/sdg{{ $index + 1 }}.png">
-              </div>
-              <div class="sdg-column">
-                <div class="unspecified">Unspecified</div>
-                <div class="negative">Negative</div>
-                <div class="neutral">Neutral</div>
-                <div class="positive">Positive</div>
-              </div>
+              <div class="row row-no-gutters">
+                <div class="col-xs-3">
+                  <img ng-src="images/sdg{{ $index + 1 }}.png" height="120">
+                </div>
+                <div class="col-xs-9">
+
+                  <div class="row">
+                    <div class="col-xs-1">
+                      <a href ng-click="$ctrlModal.setUnknown()" class="unknown" title="Reset to default">
+                        <img src="images/unknown.png" height="25">
+                      </a>
+                    </div>
+                    <div class="col-xs-9">
+                      <div class="slidecontainer">
+                        <input type="range" min="-100" max="100" value="0" class="slider" id="myRange" ng-model="slider1">
+                      </div>
+                    </div>
+
+                    <div class="col-xs-2">{{ slider1 }}%</div>
 
 
-            </div>
+                  </div>
 
-          </div>
+                  <div class="row">
+                    <textarea class="form-control" rows="3" placeholder="Comments..."></textarea>
+                  </div>
+
+                </div>
+              </div> <!-- row -->
+            </div> <!-- container -->
+          </div> <!-- form group -->
 
 
 
