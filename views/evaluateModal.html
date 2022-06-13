@@ -12,7 +12,7 @@
 
             <div class="input-group">
               <div class="input-group-addon">$</div>
-              <input type="number" class="form-control" id="people" placeholder="Amount" required ng-model="$ctrlModal.evaluationResult.people" required>
+              <input type="number" class="form-control" id="people" placeholder="Amount" ng-model="$ctrlModal.evaluationResult.people" required>
             </div>
           
             <textarea class="form-control" placeholder="Comments..." rows="3" ng-model="$ctrlModal.evaluationResult.peopleJustification"></textarea>
@@ -23,7 +23,7 @@
     
               <div class="input-group">
                 <div class="input-group-addon">$</div>
-                <input type="number" class="form-control" id="planet" placeholder="Amount" required ng-model="$ctrlModal.evaluationResult.planet" required>
+                <input type="number" class="form-control" id="planet" placeholder="Amount" ng-model="$ctrlModal.evaluationResult.planet" required>
               </div>
             
               <textarea class="form-control" placeholder="Comments..." rows="3" ng-model="$ctrlModal.evaluationResult.planetJustification"></textarea>
@@ -34,45 +34,54 @@
     
               <div class="input-group">
                 <div class="input-group-addon">$</div>
-                <input type="number" class="form-control" id="profit" placeholder="Amount" required ng-model="$ctrlModal.evaluationResult.profit" required>
+                <input type="number" class="form-control" id="profit" ng-model="$ctrlModal.evaluationResult.profit" disabled>
               </div>
             
-              <textarea class="form-control" placeholder="Comments..." rows="3" ng-model="$ctrlModal.evaluationResult.profitJustification"></textarea>
+              <textarea class="form-control" placeholder="Financial data is typically already provided in the financial statements." rows="3" ng-model="$ctrlModal.evaluationResult.profitJustification" disabled></textarea>
           </div>
 
-          <div class="form-group">
-            <div ng-repeat="sdg in $ctrlModal.evaluationResult.sdgs track by $index" style="margin-bottom: 10px">
+          <!-- <pre>{{ $ctrlModal.evaluationResult.sdgs | json }}</pre> -->
 
-              <div class="row row-no-gutters">
+          <div class="form-group">
+            <div ng-repeat="sdg in $ctrlModal.evaluationResult.sdgs track by $index" style="margin-bottom: 15px">
+
+              <div class="row">
                 <div class="col-xs-3">
                   <img ng-src="images/sdg{{ $index + 1 }}.png" height="120">
                 </div>
                 <div class="col-xs-9">
 
-                  <div class="row">
-                    <div class="col-xs-1">
-                      <a href ng-click="$ctrlModal.setUnknown()" class="unknown" title="Reset to default">
+                  <div class="row" style="height: 20px; margin-bottom: 5px;">
+                    <!-- <div class="col-xs-1">
+                      <a href ng-click="$ctrlModal.resetSDG($index)" class="unknown" title="Reset to default">
                         <img src="images/unknown.png" height="25">
                       </a>
-                    </div>
-                    <div class="col-xs-9">
+                    </div> -->
+                    <div class="col-xs-8">
                       <div class="slidecontainer">
-                        <input type="range" min="-100" max="100" value="0" class="slider" id="myRange" ng-model="slider1">
+                        <input type="range" min="-100" max="100" class="slider" id="myRange" ng-model="$ctrlModal.evaluationResult.sdgs[$index].value" ng-change="$ctrlModal.sliderChanged($index)">
                       </div>
                     </div>
 
-                    <div class="col-xs-2">{{ slider1 }}%</div>
+                    <div class="col-xs-2">
+                      <span ng-hide="$ctrlModal.evaluationResult.sdgs[$index].reset" style="font-weight: bold">{{ $ctrlModal.evaluationResult.sdgs[$index].value }}%</span>
+                    </div>
 
+                    <div class="col-xs-2" style="text-align: right">
+                      <a ng-hide="$ctrlModal.evaluationResult.sdgs[$index].reset" href ng-click="$ctrlModal.resetSDG($index)">reset</a>
+                    </div>
 
                   </div>
 
                   <div class="row">
-                    <textarea class="form-control" rows="3" placeholder="Comments..."></textarea>
+                    <div class="col-xs-12">
+                      <textarea class="form-control" rows="3" placeholder="Comments..." ng-model="$ctrlModal.evaluationResult.sdgs[$index].comment"></textarea>
+                    </div>
                   </div>
 
                 </div>
               </div> <!-- row -->
-            </div> <!-- container -->
+            </div>
           </div> <!-- form group -->
 
 
@@ -81,7 +90,7 @@
           <div class="form-group">
             <label for="profit">General comments</label>
           
-            <textarea class="form-control" placeholder="Any additional thoughts and comments you may have..." rows="3" ng-model="$ctrlModal.evaluationResult.comments"></textarea>
+            <textarea class="form-control" placeholder="Any additional thoughts you may have..." rows="3" ng-model="$ctrlModal.evaluationResult.commentGeneral"></textarea>
         </div>
 
   <div class="modal-footer">

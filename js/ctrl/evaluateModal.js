@@ -3,16 +3,34 @@ app.controller('EvaluateModalCtrl', function ($uibModalInstance, report, ipfs, e
     $ctrlModal.report = report;
 
     $ctrlModal.evaluationResult = {
-      sdgs : new Array(17)
-    }
+      sdgs : [
+        { reset: true, value: undefined, comment: undefined },
+        { reset: true, value: undefined, comment: undefined },
+        { reset: true, value: undefined, comment: undefined },
+        { reset: true, value: undefined, comment: undefined },
+        { reset: true, value: undefined, comment: undefined },
+        { reset: true, value: undefined, comment: undefined },
+        { reset: true, value: undefined, comment: undefined },
+        { reset: true, value: undefined, comment: undefined },
+        { reset: true, value: undefined, comment: undefined },
+        { reset: true, value: undefined, comment: undefined },
+        { reset: true, value: undefined, comment: undefined },
+        { reset: true, value: undefined, comment: undefined },
+        { reset: true, value: undefined, comment: undefined },
+        { reset: true, value: undefined, comment: undefined },
+        { reset: true, value: undefined, comment: undefined },
+        { reset: true, value: undefined, comment: undefined },
+        { reset: true, value: undefined, comment: undefined }
+      ]
+    };
 
 
-  
+
     $ctrlModal.ok = async function () {
       let ipfsHash = await ipfs.uploadJSON($ctrlModal.evaluationResult);
       console.info("IPFS hash of the uploaded data: " + ipfsHash + "\nhttps://gateway.ipfs.io/ipfs/" + ipfsHash);
       
-      eth.addEvaluation(utils.guid(), $ctrlModal.report.reportId, ipfsHash);
+      await eth.addEvaluation(utils.guid(), $ctrlModal.report.reportId, ipfsHash);
       
       $uibModalInstance.close($ctrlModal.evaluationResult);
     };
@@ -21,7 +39,15 @@ app.controller('EvaluateModalCtrl', function ($uibModalInstance, report, ipfs, e
       $uibModalInstance.dismiss('cancel');
     };
 
-    $ctrlModal.setUnknown = function () {
-      console.log("unknown");
+    $ctrlModal.sliderChanged = function(index) {
+      // Resetting only when value is different than 0, this is because of some initialisation magic
+      if ($ctrlModal.evaluationResult.sdgs[index].value != 0) {
+        $ctrlModal.evaluationResult.sdgs[index].reset = false;
+      }
+    }
+
+    $ctrlModal.resetSDG = function (index) {
+      $ctrlModal.evaluationResult.sdgs[index].reset = true;
+      $ctrlModal.evaluationResult.sdgs[index].value = 0;
     }
   });
