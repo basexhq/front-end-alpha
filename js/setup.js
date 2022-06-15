@@ -17,19 +17,17 @@ async function initializeETH() {
         signer = provider.getSigner()
     } catch {
         console.error("Initialising MetaMask failed");
-        document.getElementById("metamask-required").style.display = "block";
+        document.getElementById("metamask-required").classList.add("visible");
         return;
     }
 
     // Check if there is correct network
     if (window.ethereum.networkVersion != networkId) {
         // TODO: https://stackoverflow.com/questions/68252365/how-to-trigger-change-blockchain-network-request-on-metamask
-        document.getElementById("switch-network").style.display = "block";
+        document.getElementById("switch-network").classList.add("visible");
         return
     }
-
-    // We are properly initialised now
-    document.getElementById("metamask-ok").style.display = "block";
+    document.getElementById("metamask-ok").classList.add("visible");
 
     contract = new ethers.Contract(contractAddress , abi , signer)
 

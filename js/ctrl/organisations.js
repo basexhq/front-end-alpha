@@ -1,4 +1,4 @@
-app.controller("OrgsCtrl", function($scope, data, $uibModal, $log, $document, $window) {   
+app.controller("OrganisationsCtrl", function($scope, data, $uibModal, $log, $document, $window) {   
     $scope.orgs = $window.organisations;
 
     console.log($scope.orgs);

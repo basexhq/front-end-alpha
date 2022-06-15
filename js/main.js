@@ -33,9 +33,9 @@ app.config(function ($routeProvider) {
       controller: "ReportsCtrl",
       controllerAs: "$ctrl"
     })
-    .when('/orgs', {
-      templateUrl: 'views/orgs.html',
-      controller: "OrgsCtrl",
+    .when('/organisations', {
+      templateUrl: 'views/organisations.html',
+      controller: "OrganisationsCtrl",
       controllerAs: "$ctrl"
     })
     .otherwise('/home')

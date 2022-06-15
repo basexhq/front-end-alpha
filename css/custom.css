@@ -2,20 +2,6 @@
     color: red;
 }
 
-/* Emoji images source: https://pixabay.com/vectors/emojis-smileys-emoticons-6684004/ */
-
-/* https://www.w3schools.com/howto/howto_css_two_columns.asp */
-/* USING BOOTSTRAP */
-/* .sdg-column {
-    float: left;
-}
-
-.sdg-row:after {
-    content: "";
-    display: table;
-    clear: both;
-} */
-
 /* Slider: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_rangeslider */
 .slidecontainer {
   width: 100%;
@@ -54,16 +40,12 @@
   cursor: pointer;
 }
 
-.unknown {
-    /* border: 1px solid #ccc;
-    border-radius: 4px; */
-    /* padding: 8px;
-    width: 50px;
-    height: 50px;
-    display: block; */
-    filter: grayscale(100%);
+/* hacking different pieces of visibility during loads, need to continue hacking */
+.visible {
+  display: block !important;
 }
-
-.unknown:hover {
-    filter: none;
+/* #metamask-required.visible  ~ #metamask-init,
+#switch-network.visible  ~ #metamask-init, */
+#metamask-ok.visible ~ #metamask-init {
+  display: none;
 }
