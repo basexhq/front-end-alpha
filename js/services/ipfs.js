@@ -1,9 +1,11 @@
 app.service('ipfs', function ($q) {
   let service = {};
 
-  const ipfs = window.IpfsHttpClient('ipfs.infura.io', '5001', { protocol: 'https' });
-
-
+  // https://community.infura.io/t/add-file-to-ipfs-node-js/5148/4
+  // We are protecting against API key misuse by configuring ALLOWED HTTP ORIGINS
+  const INSECURE = 'Basic MkRSOEpwY3JjbW56Y0VEV015UHkyRDEzNDZlOjJiZmVmNzBmOWIyMjFmM2IwODQyM2Y4YTVlMDVjZDMy';
+  const ipfs = window.IpfsHttpClient('ipfs.infura.io', '5001', { protocol: 'https', headers: { Authorization: INSECURE } });
+  
   service.uploadJSON = function(data) {
     var deferred = $q.defer();
 
