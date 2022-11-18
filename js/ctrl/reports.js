@@ -1,5 +1,5 @@
 app.controller("ReportsCtrl", function($scope, data, $uibModal, $log, $window) {   
-    $scope.reports = $window.reports; // data.getReports();
+    $scope.reports = $window.reports;
 
     var $ctrl = this;
 

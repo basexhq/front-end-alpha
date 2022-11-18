@@ -9,8 +9,8 @@ app.service('eth', function ($q) {
     return contract.addReport(reportId,  orgId, ipfsHash, accountingPeriodStart, accountingPeriodEnd, sourceURL, title, comments);
   }
 
-  service.addEvaluation = function(evalId, orgId, ipfsHash) {
-    return contract.addEvaluation(evalId, orgId, ipfsHash);
+  service.addEvaluation = function(evalId, reportId, ipfsHash) {
+    return contract.addEvaluation(evalId, reportId, ipfsHash);
   }
 
   return service;

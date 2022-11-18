@@ -33,7 +33,7 @@ async function initializeETH() {
 
 
     /////// INITIATILISING ORGANISATIONS
-    organisationsLength = (await contract.organisationsLength()).toNumber();
+    const organisationsLength = (await contract.organisationsLength()).toNumber();
 
     let arrayOfPromises = [];
     for (let i=0; i<organisationsLength; i++) {
@@ -41,12 +41,10 @@ async function initializeETH() {
     }
     let tempResult = await Promise.all(arrayOfPromises);
 
-    organisations = tempResult.map(item => ({ orgId: item.orgId, name: item.name }));
-
-
+    /* global */ organisations = tempResult.map(item => ({ orgId: item.orgId, name: item.name })); // the initial result is the array: ['10ecafed-3a5a-4b5c-b29e-aa97d48c8238', 'Tesla', orgId: '10ecafed-3a5a-4b5c-b29e-aa97d48c8238', name: 'Tesla']
 
     /////// INITIATILISING REPORTS
-    reportsLength = (await contract.reportsLength()).toNumber();
+    const reportsLength = (await contract.reportsLength()).toNumber();
 
     arrayOfPromises = [];
     for (let i=0; i<reportsLength; i++) {
@@ -54,7 +52,7 @@ async function initializeETH() {
     }
     tempResult = await Promise.all(arrayOfPromises);
 
-    reports = tempResult.map(item => ({ 
+    /* global */ reports = tempResult.map(item => ({ 
         reportId: item.reportId, 
         orgId: item.orgId,
         uploader: item.uploader,
@@ -67,8 +65,28 @@ async function initializeETH() {
         comments: item.comments
     }));
 
-    console.log(reports);
+    /////// INITIATILISING EVALUATIONS
+    const evaluationsLength = (await contract.evaluationsLength()).toNumber();
+    arrayOfPromises = []
+    for (let i=0; i<evaluationsLength; i++) {
+        arrayOfPromises.push(contract.evaluations(i))
+    }
+    tempResult = await Promise.all(arrayOfPromises);
 
+    console.log(tempResult);
+
+    /* global */ evaluations = tempResult.map(item => ({ 
+        evaluationId: item.evaluationId,
+        reportId: item.reportId || item.orgId, // TODO FIX ME: naming issue in an old version of the smart contract
+        ipfsHash: item.ipfsHash,
+        author: item.author,
+        timestamp: new Date(item.timestamp * 1000) 
+    }));
+
+    /////// LEFT INTENTIONALLY FOR DEBUGGING PURPOSES
+    console.log("Organisations", organisations)
+    console.log("Reports", reports);
+    console.log("Evaluations", evaluations);
 
 
     // https://docs.angularjs.org/guide/bootstrap
