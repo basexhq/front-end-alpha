@@ -16,7 +16,11 @@
         <th scope="row">{{ $index + 1 }}</th>
         <td>{{ row.reportId | orgNameFromReportId }}</td>
         <td>{{ row.reportId | reportNameFromId }}</td>
-        <td>{{ row.ipfsHash | fromLocalStorage }}</td>
+        <td>
+
+          <evaluation-result hash="row.ipfsHash"></evaluation-result>
+        
+        </td>
         <td style="max-width: 80px; overflow: hidden;";>{{ row.author }}</td>
         <td>{{ row.timestamp | date }} </td>
   

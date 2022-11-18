@@ -13,3 +13,17 @@ app.directive('customOnChange', function() {
       }
     };
   });
+
+app.directive('evaluationResult', function() {
+  return {
+    restrict: 'EA',
+    templateUrl: 'views/evaluationResultDirective.html',
+    scope: {
+      hash: '='
+    },
+    link: function(scope, element, attr) {
+      // console.log(scope.hash);
+    }
+  };
+
+});
