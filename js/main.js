@@ -38,6 +38,11 @@ app.config(function ($routeProvider) {
       controller: "OrganisationsCtrl",
       controllerAs: "$ctrl"
     })
+    .when('/evaluations', {
+      templateUrl: 'views/evaluations.html',
+      controller: "EvaluationsCtrl",
+      controllerAs: "$ctrl"
+    })
     .otherwise('/home')
 
 });
