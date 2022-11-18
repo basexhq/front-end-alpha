@@ -81,6 +81,27 @@ app.service('data', function ($q) {
     return "NOT FOUND";
   }
 
+  service.getOrganisationNameByReportId = function(guid) {
+    for (let i=0; i<reports.length; i++) {
+      if (reports[i].reportId.toLocaleLowerCase() === guid.toLocaleLowerCase()) {
+          return service.getOrganisationNameById(reports[i].orgId);
+      } 
+    }
+
+    console.error("Not found the report with the ID: " + guid);
+    return "NOT FOUND";
+  }
+
+  service.getReportNameById = function(guid) {
+    for (let i=0; i<reports.length; i++) {
+      if (reports[i].reportId.toLocaleLowerCase() === guid.toLocaleLowerCase()) {
+          return reports[i].title;
+      } 
+    }
+    console.error("Not found the report with the ID: " + guid);
+    return "NOT FOUND";
+  }
+
   return service;
   
 });

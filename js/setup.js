@@ -41,7 +41,10 @@ async function initializeETH() {
     }
     let tempResult = await Promise.all(arrayOfPromises);
 
-    /* global */ organisations = tempResult.map(item => ({ orgId: item.orgId, name: item.name })); // the initial result is the array: ['10ecafed-3a5a-4b5c-b29e-aa97d48c8238', 'Tesla', orgId: '10ecafed-3a5a-4b5c-b29e-aa97d48c8238', name: 'Tesla']
+    /* global */ organisations = tempResult.map(item => ({ // the initial result is the array: ['10ecafed-3a5a-4b5c-b29e-aa97d48c8238', 'Tesla', orgId: '10ecafed-3a5a-4b5c-b29e-aa97d48c8238', name: 'Tesla']
+        orgId: item.orgId, 
+        name: item.name 
+    }));
 
     /////// INITIATILISING REPORTS
     const reportsLength = (await contract.reportsLength()).toNumber();

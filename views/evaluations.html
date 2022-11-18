@@ -1,1 +1,25 @@
 <h1>List of evaluations</h1>
+
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Organisation</th>
+        <th>Report title</th>
+        <th>Evaluation content</th>
+        <th>Author</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="row in evaluations">
+        <th scope="row">{{ $index + 1 }}</th>
+        <td>{{ row.reportId | orgNameFromReportId }}</td>
+        <td>{{ row.reportId | reportNameFromId }}</td>
+        <td>{{ row.ipfsHash }}</td>
+        <td>{{ row.author }}</td>
+        <td>{{ row.timestamp | date }} </td>
+  
+      </tr>
+    </tbody>
+  </table>
