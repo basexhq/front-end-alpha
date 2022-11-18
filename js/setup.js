@@ -76,8 +76,6 @@ async function initializeETH() {
     }
     tempResult = await Promise.all(arrayOfPromises);
 
-    console.log(tempResult);
-
     /* global */ evaluations = tempResult.map(item => ({ 
         evaluationId: item.evaluationId,
         reportId: item.reportId || item.orgId, // TODO FIX ME: naming issue in an old version of the smart contract

@@ -15,3 +15,9 @@ app.filter('reportNameFromId', function (data) {
         return  data.getReportNameById(reportId);
     };
 });
+
+app.filter('fromLocalStorage', function ($window) {
+    return function (hash) {
+        return  $window.localStorage[hash];
+    };
+});
