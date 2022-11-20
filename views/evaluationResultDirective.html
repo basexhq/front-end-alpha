@@ -1,1 +1,8 @@
-<code>{{ hash }}</code>
+People: <strong>${{ev.people}}</strong> {{ev.peopleJustification}}<br>
+
+Planet: <strong>${{ev.planet}}</strong> {{ev.planetJustification}}<br>
+
+
+<span ng-if="ev.commentGeneral">
+General comments: {{ ev.commentGeneral }}
+</span>

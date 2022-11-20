@@ -82,7 +82,6 @@ app.service('ipfs', function ($q, $http, $window) {
     Promise.all(arrayOfPromises).then(function() {
       console.log("IPFS ---> retrieveAllEvaluations ---> done")
     })
-
   }
 
   service.retrieveAllEvaluations();
