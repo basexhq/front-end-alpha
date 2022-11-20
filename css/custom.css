@@ -49,3 +49,7 @@
 #metamask-ok.visible ~ #metamask-init {
   display: none;
 }
+
+.evaluation-header {
+  font-size: 1.2em;
+}

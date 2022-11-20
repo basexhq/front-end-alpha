@@ -24,6 +24,8 @@ app.directive('evaluationResult', function(ipfs) {
     link: async function(scope, element, attr) {
       ipfs.retrieve(scope.hash).then(function(data) {
         scope.ev = JSON.parse(data);
+
+        console.log(scope.ev);
       })
     }
   };

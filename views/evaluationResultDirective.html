@@ -1,8 +1,17 @@
-People: <strong>${{ev.people}}</strong> {{ev.peopleJustification}}<br>
+<div class="evaluation-header">People: <strong>{{ev.people}}</strong></div>
+{{ev.peopleJustification}}<br>
+<span ng-if="ev.peopleJustification"><br></span> 
 
-Planet: <strong>${{ev.planet}}</strong> {{ev.planetJustification}}<br>
+<div class="evaluation-header">Planet: <strong>{{ev.planet}}</strong></div>
+{{ev.planetJustification}}<br>
+<span ng-if="ev.planetJustification"><br></span> 
+
+<div ng-repeat="sdg in ev.sdgs" ng-if="sdg.reset === false" style="margin-bottom: 2px">
+    <img ng-src="images/sdg{{ $index + 1 }}.png" height="50"> <strong>{{sdg.value}}</strong> {{sdg.comment}}
+</div>
 
 
 <span ng-if="ev.commentGeneral">
+<br>
 General comments: {{ ev.commentGeneral }}
 </span>
